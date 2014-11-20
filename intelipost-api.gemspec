@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Intelipost::Api::VERSION
   spec.authors       = ["Renato Alves"]
   spec.email         = ["renatodex@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Intelipost API Gem for Ruby}
+  spec.description   = %q{Intelipost API Gem for Ruby}
+  spec.homepage      = "http://github.com/renatodex/intelipost-ruby-api"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
