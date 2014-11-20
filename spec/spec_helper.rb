@@ -14,8 +14,8 @@
 # users commonly want.
 #
 
-# require "bundler"
-# Bundler.setup
+require "bundler"
+Bundler.setup
 require "intelipost/api"
 
 RSpec.configure do |config|

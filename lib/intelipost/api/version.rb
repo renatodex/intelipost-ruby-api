@@ -1,5 +1,5 @@
 module Intelipost
-  module Api
+  module ApiModules
     VERSION = "0.0.1"
   end
 end

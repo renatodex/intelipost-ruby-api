@@ -3,7 +3,16 @@ require "intelipost/api/version"
 require "intelipost/api/facade"
 
 module Intelipost
-  module Api
+  class Api
+    def initialize(api_key)
+    end
+
+    def CepLocation
+      ApiModules::CepLocation
+    end
+  end
+
+  module ApiModules
     module CepLocation
       class << self
         def retrieve_address(zipcode)

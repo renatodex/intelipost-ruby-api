@@ -1,22 +1,22 @@
 require 'spec_helper'
 
 describe Intelipost::Api do
+
+  let(:intelipost) {
+    Intelipost::Api.new("apikey")
+  }
+
   it "should retrieve a zipcode" do
-    address = Intelipost::Api::CepLocation.retrieve_address('01413000')
-    expect(address).to eq({
-      :status => "OK",
-      :messages => [ ],
-      :content => {
-        :state => "Sao Paulo",
-        :city => "São Paulo",
-        :bairro => "Cerqueira Cesar",
-        :street => "Rua Augusta"
-      },
-      :time => "32.1 ms"
-    })
+    intelipost_address = intelipost.CepLocation.retrieve_address('01413000')
+    expect(intelipost_address.status).to eq "OK"
+    expect(intelipost_address.messages).to eq []
+    expect(intelipost_address.state).to eq "Sao Paulo"
+    expect(intelipost_address.city).to eq "Sao Paulo"
+    expect(intelipost_address.bairro).to eq "Cerqueira Cesar"
+    expect(intelipost_address.street).to eq "Rua Augusta"
+    expect(intelipost_address.time).to eq "32.1 ms"
   end
 end
-
 
 # API Structure:
 # Intelipost::Api::CepLocation.address_complete(zipcode)
