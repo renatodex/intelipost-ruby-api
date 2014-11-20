@@ -5,7 +5,7 @@ require 'intelipost/api/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "intelipost-api"
-  spec.version       = Intelipost::ApiModules::VERSION
+  spec.version       = Intelipost::VERSION
   spec.authors       = ["Renato Alves"]
   spec.email         = ["renatodex@gmail.com"]
   spec.summary       = %q{Intelipost API Gem for Ruby}

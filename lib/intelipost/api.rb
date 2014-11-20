@@ -5,7 +5,7 @@ require "virtus"
 require "intelipost/api/version"
 require "intelipost/api/facade"
 require "intelipost/api/models/address"
-require "intelipost/api/cep_location"
+require "intelipost/api/components/cep_location"
 
 $logger = Logging.logger(STDOUT)
 $logger.level = :warn

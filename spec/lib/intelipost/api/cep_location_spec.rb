@@ -47,6 +47,5 @@ describe Intelipost::ApiComponents::CepLocation do
     allow(Intelipost::Facade).to receive(:get) { response_cep_invalid }
     intelipost_address = intelipost.CepLocation.address_complete('99999999')
     expect(intelipost_address.messages.first["key"]).to eq "cep.missing"
-    binding.pry
   end
 end
