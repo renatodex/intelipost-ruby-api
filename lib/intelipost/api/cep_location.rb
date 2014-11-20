@@ -1,14 +1,19 @@
-module Intelipost::ApiModules
-  module CepLocation
-    class << self
-      def retrieve_address(zipcode)
-        raw_data = Intelipost::Facade.get("/cep_location/address_complete/#{zipcode}")
-        address = Intelipost::Models::Address.new
-        address.attributes = raw_data
-        address.attributes = raw_data["content"]
+module Intelipost::ApiComponents
+  class CepLocation
+    attr_accessor :api_key
 
-        address
-      end
+    def initialize(api_key)
+      self.api_key = api_key
+    end
+
+    def address_complete(zipcode)
+      raw_data = Intelipost::Facade.get_with_log("/v1/cep_location/address_complete/#{zipcode}", api_key)
+      address = Intelipost::Models::Address.new
+
+      address.attributes = raw_data
+      address.attributes = raw_data["content"] || {}
+
+      address
     end
   end
 end
