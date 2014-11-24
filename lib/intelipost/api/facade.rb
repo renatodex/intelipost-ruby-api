@@ -3,6 +3,7 @@ module Intelipost
     include ::HTTParty
     base_uri 'https://api.intelipost.com.br/api'
     format :json
+    default_timeout 15
 
     class << self
       def get_with_log(url, api_key, params={})
@@ -16,7 +17,11 @@ module Intelipost
       private
       def call_intelipost(api_key, action, url, params)
         $logger.info ("[info] calling intelipost with #{action.to_s.upcase}: #{url}, #{params.to_s}")
-        response = self.send(action, url, params_with_apikey(params, api_key))
+        begin
+          response = self.send(action, url, params_with_apikey(params, api_key))
+        rescue SocketError
+          response = Intelipost::Models::ErrorResponse.new({status: "ERROR", messages: [{"type" => "ERROR", "text" => "Connection Timeout", "key" => "timeout"}]})
+        end
         $logger.info ("[info] intelipost response from call #{action.to_s.upcase} #{url}, #{params.to_s}: #{response.to_s}")
 
         response
