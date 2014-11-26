@@ -45,7 +45,10 @@ describe Intelipost::ApiComponents::CepLocation do
 
   it "should retrieve an invalid zipcode" do
     allow(Intelipost::Facade).to receive(:get) { response_cep_invalid }
-    intelipost_address = intelipost.CepLocation.address_complete('99999999')
-    expect(intelipost_address.messages.first["key"]).to eq "cep.missing"
+    response = intelipost.CepLocation.address_complete('99999999')
+    expect(response.class).to be Intelipost::Models::ErrorResponse
+    expect(response.messages.first["key"]).to eq "cep.missing"
+
+    binding.pry
   end
 end

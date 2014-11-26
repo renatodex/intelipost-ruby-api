@@ -1,5 +1,5 @@
 module Intelipost::ApiComponents
-  class CepLocation
+  class CepLocation < Component
     attr_accessor :api_key
 
     def initialize(api_key)
@@ -8,12 +8,16 @@ module Intelipost::ApiComponents
 
     def address_complete(zipcode)
       raw_data = Intelipost::Facade.get_with_log("/v1/cep_location/address_complete/#{zipcode}", api_key)
-      address = Intelipost::Models::Address.new
 
-      address.attributes = raw_data
-      address.attributes = raw_data["content"] || {}
+      if has_error?(raw_data)
+        response = Intelipost::Models::ErrorResponse.new(raw_data)
+      else
+        response = Intelipost::Models::Address.new
+        response.attributes = raw_data
+        response.attributes = raw_data["content"] || {}
+      end
 
-      address
+      response
     end
   end
 end

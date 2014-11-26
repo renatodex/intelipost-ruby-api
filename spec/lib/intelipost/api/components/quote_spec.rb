@@ -13,8 +13,8 @@ describe Intelipost::ApiComponents::Quote do
        "content" => {
           "id" => 1022029,
           "client_id" => 243,
-          "origin_zip_code" => "04037-002",
-          "destination_zip_code" => "20920-440",
+          "origin_zip_code" => "04180-010",
+          "destination_zip_code" => "01419-002",
           "delivery_options" =>[{
               "delivery_method_id" => 1,
               "delivery_estimate_business_days" => 4,
@@ -49,15 +49,40 @@ describe Intelipost::ApiComponents::Quote do
     }]
   }
 
+  let(:volumes_object_array) {
+    [build(:volume)]
+    # volumes_array.inject([]) { |res, v|
+    #   res << Intelipost::Models::Volume.new(v)
+    # }
+  }
+
   it "should create a quote" do
-    #allow(Intelipost::Facade).to receive(:get) { raw_quote }
-    quote = intelipost.Quote.create('01419002', '04180010', volumes_array)
+    allow(Intelipost::Facade).to receive(:post) { raw_quote }
+    quote = intelipost.Quote.create('04180-010', '014190-002', volumes_object_array)
+
     expect(quote.status).to eq "OK"
     expect(quote.messages).to eq []
     expect(quote.id).to eq 1022029
     expect(quote.client_id).to eq 243
     expect(quote.time).to eq "19.9 ms"
-    expect(quote.origin_zip_code).to eq '01419002'
-    expect(quote.destination_zip_code).to eq '04180010'
+    expect(quote.origin_zip_code).to eq '04180-010'
+    expect(quote.destination_zip_code).to eq '01419-002'
+  end
+
+  it "should generate json request object for quote" do
+    expect(intelipost.Quote.request_json('01419002', '04180010', volumes_object_array)).to eq({
+       "origin_zip_code" => "01419002",
+       "destination_zip_code" => "04180010",
+       "volumes" => [
+         {
+          "weight" => 2.0,
+          "volume_type" => "BOX",
+          "cost_of_goods" => 30.99,
+          "width" => 20.0,
+          "height" => 10.0,
+          "length" => 25.0
+         }
+       ]
+    })
   end
 end

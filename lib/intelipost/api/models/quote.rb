@@ -9,5 +9,7 @@ module Intelipost::Models
     attribute :status, String
     attribute :messages, Array
     attribute :time, String
+    attribute :volumes, Array[::Intelipost::Models::Volume]
+    attribute :delivery_options, Array[::Intelipost::Models::DeliveryOption]
   end
 end

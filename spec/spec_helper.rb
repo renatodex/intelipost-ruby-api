@@ -16,9 +16,16 @@
 
 require "bundler"
 Bundler.setup
+require "factory_girl"
 require "intelipost/api"
 
+['factories/*'].each do |p|
+  Dir[File.dirname(__FILE__) + "/#{p}"].each {|file| require file }
+end
+
 RSpec.configure do |config|
+  include FactoryGirl::Syntax::Methods
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

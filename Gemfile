@@ -8,6 +8,7 @@ gem 'logging'
 gem 'colorize'
 gem 'virtus'
 gem 'pry'
+gem 'factory_girl'
 
 # Specify your gem's dependencies in intelipost-api.gemspec
 gemspec

@@ -1,14 +1,7 @@
-require "pry"
-require "logging"
-require "httparty"
-require "virtus"
-require "intelipost/api/version"
-require "intelipost/api/facade"
-require "intelipost/api/models/address"
-require "intelipost/api/models/quote"
-require "intelipost/api/models/error_response"
-require "intelipost/api/components/cep_location"
-require "intelipost/api/components/quote"
+["pry", "logging", "httparty", "virtus"].each { |lib| require lib }
+['*.rb','models/*.rb', 'components/*.rb'].each do |p|
+  Dir[File.dirname(__FILE__) + "/api/#{p}"].each {|file| require file }
+end
 
 $logger = Logging.logger(STDOUT)
 $logger.level = :warn
