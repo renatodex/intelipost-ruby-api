@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Intelipost::ApiComponents::CepLocation do
 
   let(:intelipost) {
-    Intelipost::Api.new("apikey")
+    Intelipost::Api.new("apikey", :test)
   }
 
   let(:response_cep_ok) {{

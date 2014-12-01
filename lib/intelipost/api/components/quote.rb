@@ -25,7 +25,7 @@ module Intelipost::ApiComponents
 
     def create(origin_zipcode, destination_zipcode, volumes_collection)
       raw_request = self.request_json(origin_zipcode, destination_zipcode, volumes_collection)
-      raw_response = Intelipost::Facade.post_with_log("/v1/quote", api_key)
+      raw_response = Intelipost::Facade.post_with_log("/v1/quote", api_key, :body => raw_request.to_json)
 
       if raw_response["status"] == "ERROR"
         response = Intelipost::Models::ErrorResponse.new(raw_response)

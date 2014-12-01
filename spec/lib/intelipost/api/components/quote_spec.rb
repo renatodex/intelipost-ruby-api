@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Intelipost::ApiComponents::Quote do
 
   let(:intelipost) {
-    Intelipost::Api.new("apikey")
+    Intelipost::Api.new("apikey", :test)
   }
 
   let(:raw_quote) {
