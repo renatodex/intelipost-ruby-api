@@ -1,7 +1,7 @@
 require "bundler"
 Bundler.setup
 require "factory_girl"
-require "intelipost/api"
+require "intelipost-api"
 require "colorize"
 
 ['factories/*'].each do |p|

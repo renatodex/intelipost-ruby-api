@@ -1,8 +1,3 @@
-["pry", "logging", "httparty", "virtus"].each { |lib| require lib }
-['*.rb','models/*.rb', 'components/*.rb'].each do |p|
-  Dir[File.dirname(__FILE__) + "/api/#{p}"].each {|file| require file }
-end
-
 module Intelipost
   class Api
     attr_accessor :api_key
