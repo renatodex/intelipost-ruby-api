@@ -24,6 +24,7 @@ require "intelipost/api"
 end
 
 RSpec.configure do |config|
+  include Intelipost::Models
   include FactoryGirl::Syntax::Methods
 
   # rspec-expectations config goes here. You can use an alternate

@@ -48,7 +48,5 @@ describe Intelipost::ApiComponents::CepLocation do
     response = intelipost.CepLocation.address_complete('99999999')
     expect(response.class).to be Intelipost::Models::ErrorResponse
     expect(response.messages.first["key"]).to eq "cep.missing"
-
-    binding.pry
   end
 end
