@@ -1,3 +1,7 @@
+require_relative "volume"
+require_relative "delivery_option"
+
+
 module Intelipost::Models
   class Quote
     include Virtus::Model
