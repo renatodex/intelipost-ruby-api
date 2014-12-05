@@ -10,7 +10,6 @@ end
 
 gem 'httparty'
 gem 'logging'
-gem 'colorize'
 gem 'virtus'
 gem 'colorize'
 
