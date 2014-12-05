@@ -8,10 +8,10 @@ group :test, :development do
   gem 'factory_girl'
 end
 
-gem 'httparty'
-gem 'logging'
-gem 'virtus'
-gem 'colorize'
+gem 'logging', '~> 1.8'
+gem 'httparty', '~> 0.8'
+gem 'virtus', '~> 1.0'
+gem 'colorize', '~> 0.7'
 
 # Specify your gem's dependencies in intelipost-api.gemspec
 gemspec

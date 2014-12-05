@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'logging', '~> 1.8'
-  spec.add_dependency 'httparty', '~> 0.13'
+  spec.add_dependency 'httparty', '~> 0.8'
   spec.add_dependency 'virtus', '~> 1.0'
   spec.add_dependency 'colorize', '~> 0.7'
 
